@@ -1,0 +1,28 @@
+{
+  "malades": [
+    {
+      "id": 1,
+      "prenom": "a",
+      "nom": "a",
+      "adresse": "a",
+      "date": "a",
+      "examen": "a",
+      "telephone": "5219",
+      "antecedant": "a",
+      "exploration": "a",
+      "ordonnance": "test"
+    },
+    {
+      "id": 2,
+      "prenom": "b",
+      "nom": "b",
+      "adresse": "b",
+      "date": "b",
+      "examen": "b",
+      "telephone": "25616",
+      "antecedant": "b",
+      "exploration": "b",
+      "ordonnance": "b"
+    }
+  ]
+}
