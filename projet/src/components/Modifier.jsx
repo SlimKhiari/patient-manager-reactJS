@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import  { useHistory } from 'react-router-dom';
 import { mettreAjourMalade } from "../redux/actions/maladeAction";
 import api from "../api/malades";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Modifier = () => {
     
@@ -77,14 +78,16 @@ const Modifier = () => {
         toast.success(`La modification des informations de ${data.prenom} ${data.nom} a bien été enregistrée.`);
     }
 
-    
     function lireMalades()
     {
-        history.push("/home");
+        history.push("/");
         window.location.reload(false);
     }
 
+    const { login, isAuthenticated } = useAuth0();
+
     return (
+        isAuthenticated && ( 
         <div className="container">
             {
                 currentMalade? (
@@ -138,7 +141,7 @@ const Modifier = () => {
                 )}
             <br/>
        </div>
-    );
+    ));
 };
 
 export default Modifier

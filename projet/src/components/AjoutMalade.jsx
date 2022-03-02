@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import  { useHistory } from 'react-router-dom';
 import { ajouterMalade } from "../redux/actions/maladeAction";
 import api from "../api/malades";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AjoutMalade = () => {
 
@@ -73,11 +74,13 @@ const AjoutMalade = () => {
 
     function lireMalades()
     {
-        history.push("/home");
+        history.push("/");
         window.location.reload(false);
     }
+    const { user, isAuthenticated } = useAuth0();
 
     return (
+        isAuthenticated && ( 
         <div className="container">
            <div className="row">
                 <h1 className="display-9 my-5 text-center"> Dossier médical</h1>
@@ -124,7 +127,7 @@ const AjoutMalade = () => {
            </div>
            <br/>
        </div>
-    )
+    ))
 }
 
 export default AjoutMalade

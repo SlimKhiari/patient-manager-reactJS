@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux';
 import { effacerMalade } from "../redux/actions/maladeAction";
 import api from "../api/malades";
 import { Form } from "react-bootstrap";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function Home() {
-    
+    const { user, isAuthenticated } = useAuth0();
+
     const [searchTerm, setSearchTerm] = useState("");
     let [malades, setMalades] = useState([""]);
     const retrieveMalades = async () => {
@@ -30,7 +32,14 @@ export default function Home() {
     }
 
     return (
+     isAuthenticated && ( 
        <div className="container">
+           <hr></hr>
+            <div>
+                <img src={user.picture} alt={user.name} />
+                <h2>{user.name}</h2>
+           </div>   
+           <hr></hr>
            <div className="row">
                 <div className="col-md 12 my-5 text-right">
                     <Form.Control type="text"
@@ -85,5 +94,5 @@ export default function Home() {
                 </div>
            </div>
        </div>
-    );
+    ));
 }
